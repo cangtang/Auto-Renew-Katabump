@@ -40,7 +40,7 @@ jobs:
           CHROME_VERSION="143"
           fi
           echo "Detected Chrome/Chromium Major Version: $CHROME_VERSION"
-          echo "CHROME_MAJOR_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
+          echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
 
       - name: Start X Virtual Frame Buffer (Xvfb)
         # 在后台启动 Xvfb，创建一个虚拟屏幕 :99
@@ -50,4 +50,5 @@ jobs:
         env:
           DISPLAY: ':99'
           HEADLESS: 'false'
+          CHROME_VERSION: ${{ env.CHROME_VERSION }}
         run: python renew_katabump.py
